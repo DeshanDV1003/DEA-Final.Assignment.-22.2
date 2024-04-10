@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PerfumeLanka</title>
+    <link rel="stylesheet" href="Style.css">
+    <script src="https://kit.fontawesome.com/1165876da6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+     <!--nav bar start-->
+    <header>
+    <div class="first">
+        <nav>
+            <h2 class="logo">Perfume Lanka</h2>
+            <ul>
+                <li><a href="" class="home">Home</a></li>
+                <li><a href="">Men</a></li>
+                <li><a href="">Women</a></li>
+                <li><a href="">Unisex</a></li>
+                <li><a href="">Register</a></li>
+                <li><a href="">Contact Us</a></li>
+            </ul>
+            <div class="menu">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </nav>
+    </div>
+    
+</body>
+<script>
+    const menu = document.querySelector('.menu')
+    const menulist = document.querySelector('nav ul')
+    menu.addEventListener('click',()=>{
+           menulist.classList.toggle('showmenu')
+    })
+</script>
+</header>
+<!--nav bar ends-->
+
+<!--slides starting -->
+<main>
+    <body>
+
+        <div class="slide-container">
+            
+            <div class="slides">
+                <img src="B:\web\web app\JAVA WEB APP\images\slide1.jpg" class="active">
+                <img src="B:\web\web app\JAVA WEB APP\images\slide2.jpg">
+                <img src="B:\web\web app\JAVA WEB APP\images\slide4.jpg">
+                <img src="B:\web\web app\JAVA WEB APP\images\slide3.jpg">
+                <img src="B:\web\web app\JAVA WEB APP\images\slide5.jpg">
+            </div>
+        
+            <div class="buttons">
+                <span class="next">&#10095;</span>
+                <span class="prev">&#10094;</span>
+            </div>
+        
+            <div class="dotsContainer">
+                <div class="dot active" attr='0' onclick="switchImage(this)"></div>
+                <div class="dot" attr='1' onclick="switchImage(this)"></div>
+                <div class="dot" attr='2' onclick="switchImage(this)"></div>
+                <div class="dot" attr='3' onclick="switchImage(this)"></div>
+                <div class="dot" attr='4' onclick="switchImage(this)"></div>
+            </div>
+        
+        </div>
+        
+        <script type="text/javascript">
+            
+            // Access the Images
+            let slideImages = document.querySelectorAll('img');
+            // Access the next and prev buttons
+            let next = document.querySelector('.next');
+            let prev = document.querySelector('.prev');
+            // Access the indicators
+            let dots = document.querySelectorAll('.dot');
+        
+            var counter = 0;
+        
+            // Code for next button
+            next.addEventListener('click', slideNext);
+            function slideNext(){
+            slideImages[counter].style.animation = 'next1 0.5s ease-in forwards';
+            if(counter >= slideImages.length-1){
+                counter = 0;
+            }
+            else{
+                counter++;
+            }
+            slideImages[counter].style.animation = 'next2 0.5s ease-in forwards';
+            indicators();
+            }
+        
+            // Code for prev button
+            prev.addEventListener('click', slidePrev);
+            function slidePrev(){
+            slideImages[counter].style.animation = 'prev1 0.5s ease-in forwards';
+            if(counter == 0){
+                counter = slideImages.length-1;
+            }
+            else{
+                counter--;
+            }
+            slideImages[counter].style.animation = 'prev2 0.5s ease-in forwards';
+            indicators();
+            }
+        
+            // Auto slideing
+            function autoSliding(){
+                deletInterval = setInterval(timer, 3000);
+                function timer(){
+                    slideNext();
+                    indicators();
+                }
+            }
+            autoSliding();
+        
+            // Stop auto sliding when mouse is over
+            const container = document.querySelector('.slide-container');
+            container.addEventListener('mouseover', function(){
+                clearInterval(deletInterval);
+            });
+        
+            // Resume sliding when mouse is out
+            container.addEventListener('mouseout', autoSliding);
+        
+            // Add and remove active class from the indicators
+            function indicators(){
+                for(i = 0; i < dots.length; i++){
+                    dots[i].className = dots[i].className.replace(' active', '');
+                }
+                dots[counter].className += ' active';
+            }
+        
+            // Add click event to the indicator
+            function switchImage(currentImage){
+                currentImage.classList.add('active');
+                var imageId = currentImage.getAttribute('attr');
+                if(imageId > counter){
+                slideImages[counter].style.animation = 'next1 0.5s ease-in forwards';
+                counter = imageId;
+                slideImages[counter].style.animation = 'next2 0.5s ease-in forwards';
+                }
+                else if(imageId == counter){
+                    return;
+                }
+                else{
+                slideImages[counter].style.animation = 'prev1 0.5s ease-in forwards';
+                counter = imageId;
+                slideImages[counter].style.animation = 'prev2 0.5s ease-in forwards';	
+                }
+                indicators();
+            }
+        
+        </script>
+        </body>
+</main>
+<!--slides ending--> 
+<!--logo slides start-->
+<div class="logos">
+    <div class="logos-slide">
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Adidas-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Armani-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Bulgari-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Burberry-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Cartier_(jeweler)-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Chanel-Logo.wine.svg" />
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Christian_Dior_(fashion_house)-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Dolce_&_Gabbana-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Gucci-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Hermès-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Hugo_Boss-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Kenzo_(brand)-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Lacoste-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Louis_Vuitton-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Ralph_Lauren_Corporation-Logo.wine.svg"/>
+      
+    </div>
+
+    <div class="logos-slide">
+        <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Adidas-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Armani-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Bulgari-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Burberry-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Cartier_(jeweler)-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Chanel-Logo.wine.svg" />
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Christian_Dior_(fashion_house)-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Dolce_&_Gabbana-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Gucci-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Hermès-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Hugo_Boss-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Kenzo_(brand)-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Lacoste-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Louis_Vuitton-Logo.wine.svg"/>
+      <img src= "B:\web\web app\JAVA WEB APP\images\Logos\Ralph_Lauren_Corporation-Logo.wine.svg"/>
+     
+    </div>
+  </div>
+<!--logo slides End-->
+
+<!--Grid part starting-->
+<div class="Grid">
+
+    <h1 class="heading">Our Perfumes</h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="B:\web\web app\JAVA WEB APP\images\grid2.jpg" alt="">
+            <h3>Perfume for Womens</h3>
+            <a href="#" class="btn">Shop Now</a>
+        </div>
+
+        <div class="box">
+            <img src="B:\web\web app\JAVA WEB APP\images\grid1.jpg" alt="">
+            <h3>Perfume for Mens</h3>
+            <a href="#" class="btn">Shop Now</a>
+        </div>
+
+        <div class="box">
+            <img src="B:\web\web app\JAVA WEB APP\images\unisex.jpg" alt="">
+            <h3>Unisex Perfume</h3>
+            <a href="#" class="btn">Shop Now</a>
+        </div>
+
+    </div>
+
+</div>
+<!--Grid part ending-->
+
+<!--Top selling products start-->
+
+<!--Top selling products end-->
+
+<!--footer part starting-->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <h3>Contact Us</h3>
+            <p>Email:PerfumeLanka@gmail.com</p>
+            <p>Phone:077 497 2787</p>
+            <p>Address:No 57,Galle road,colombo 05</p>
+        </div>
+        <div class="footer-content">
+            <h3>Quick Links</h3>
+            <ul class="list">
+                <li><a href="">Home</a></li>
+                <li><a href="">Men</a></li>
+                <li><a href="">Women</a></li>
+                <li><a href="">Unisex</a></li>
+                <li><a href="">Register</a></li>
+                <li><a href="">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-content">
+            <h3>Follow Us</h3>
+            <ul class="social-icons">
+             <li><a href=""><i class="fab fa-facebook"></i></a></li>
+             <li><a href=""><i class="fab fa-twitter"></i></a></li>
+             <li><a href=""><i class="fab fa-instagram"></i></a></li>
+             <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Payment Method</h3>
+                <img src="B:\web\web app\JAVA WEB APP\images\visa.png">
+            </div>
+    </div>
+    <div class="bottom-bar">
+        <p>&copy; 2024 your company . All rights reserved</p>
+    </div>
+
+    </div>
+
+</footer>
+<!--footer part ending-->
+</html>
