@@ -234,7 +234,176 @@
 <!--Grid part ending-->
 
 <!--Top selling products start-->
+<html class="abi">
+    
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   <!-- font awesome cdn link  -->
+   <link class="rare" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
 
+   
+
+</head>
+
+<body class="abi1">
+
+<div class="top-selling">
+
+   <h3 class="title"> Top selling products </h3>
+
+   <div class="products-container">
+
+      <div class="product" data-name="p-1">
+         <img src="B:\web\web app\JAVA WEB APP\images\unisex6.webp" alt="">
+         <h3>
+            Club de nuit</h3>
+         <div class="price">21,000.00</div>
+      </div>
+
+      <div class="product" data-name="p-2">
+         <img src="B:\web\web app\JAVA WEB APP\images\unisex15.jpg" alt="">
+         <h3>Dior women</h3>
+         <div class="price">15,000.00</div>
+      </div>
+
+      <div class="product" data-name="p-3">
+         <img src="B:\web\web app\JAVA WEB APP\images\club.jpg" alt="">
+         <h3>Lacoste</h3>
+         <div class="price">18,000.00</div>
+      </div>
+
+      <div class="product" data-name="p-4">
+        <img src="B:\web\web app\JAVA WEB APP\images\Channelwomen3.webp" alt="">
+        <h3>Club de nuit</h3>
+        <div class="price">21,000.00</div>
+     </div>
+
+     <div class="product" data-name="p-5">
+        <img src="B:\web\web app\JAVA WEB APP\images\docewomen3.jpg"alt="">
+        <h3>Dior women</h3>
+        <div class="price">15,000.00</div>
+     </div>
+
+     <div class="product" data-name="p-6">
+        <img src="B:\web\web app\JAVA WEB APP\images\lvwomen1.avif" alt="">
+        <h3>Lacoste</h3>
+        <div class="price">18,000.00</div>
+     </div>
+
+    
+
+   </div>
+
+</div>
+
+<div class="products-preview">
+
+   <div class="preview" data-target="p-1">
+      <i class="fas fa-times"></i>
+      <img src="B:\web\web app\JAVA WEB APP\images\unisex6.webp" alt="">
+      <h3>Club de nuit</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, dolorem.</p>
+      <div class="price">21,000.00</div>
+      <div class="buttons">
+         <a href="#" class="buy">buy now</a>
+         <a href="#" class="cart">add to cart</a>
+      </div>
+   </div>
+
+   <div class="preview" data-target="p-2">
+    <i class="fas fa-times"></i>
+    <img src="B:\web\web app\JAVA WEB APP\images\unisex15.jpg" alt="">
+    <h3>Club de nuit</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, dolorem.</p>
+    <div class="price">21,000.00</div>
+    <div class="buttons">
+       <a href="#" class="buy">buy now</a>
+       <a href="#" class="cart">add to cart</a>
+    </div>
+ </div>
+
+ <div class="preview" data-target="p-3">
+    <i class="fas fa-times"></i>
+    <img src="B:\web\web app\JAVA WEB APP\images\club.jpg" alt="">
+    <h3>Club de nuit</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, dolorem.</p>
+    <div class="price">21,000.00</div>
+    <div class="buttons">
+       <a href="#" class="buy">buy now</a>
+       <a href="#" class="cart">add to cart</a>
+    </div>
+ </div>
+
+ <div class="preview" data-target="p-4">
+    <i class="fas fa-times"></i>
+    <img src="B:\web\web app\JAVA WEB APP\images\Channelwomen3.webp" alt="">
+    <h3>Club de nuit</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, dolorem.</p>
+    <div class="price">21,000.00</div>
+    <div class="buttons">
+       <a href="#" class="buy">buy now</a>
+       <a href="#" class="cart">add to cart</a>
+    </div>
+ </div>
+
+ <div class="preview" data-target="p-5">
+    <i class="fas fa-times"></i>
+    <img src="B:\web\web app\JAVA WEB APP\images\docewomen3.jpg" alt="">
+    <h3>Club de nuit</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, dolorem.</p>
+    <div class="price">21,000.00</div>
+    <div class="buttons">
+       <a href="#" class="buy">buy now</a>
+       <a href="#" class="cart">add to cart</a>
+    </div>
+ </div>
+
+ <div class="preview" data-target="p-6">
+    <i class="fas fa-times"></i>
+    <img src="B:\web\web app\JAVA WEB APP\images\lvwomen1.avif" alt="">
+    <h3>Club de nuit</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, dolorem.</p>
+    <div class="price">21,000.00</div>
+    <div class="buttons">
+       <a href="#" class="buy">buy now</a>
+       <a href="#" class="cart">add to cart</a>
+    </div>
+ </div>
+
+</div>
+
+</body>
+
+</html>
+<script>
+    let preveiwContainer = document.querySelector('.products-preview');
+let previewBox = preveiwContainer.querySelectorAll('.preview');
+
+document.querySelectorAll('.products-container .product').forEach(product =>{
+  product.onclick = () =>{
+    preveiwContainer.style.display = 'flex';
+    let name = product.getAttribute('data-name');
+    previewBox.forEach(preview =>{
+      let target = preview.getAttribute('data-target');
+      if(name == target){
+        preview.classList.add('active');
+      }
+    });
+  };
+});
+
+previewBox.forEach(close =>{
+  close.querySelector('.fa-times').onclick = () =>{
+    close.classList.remove('active');
+    preveiwContainer.style.display = 'none';
+  };
+});
+</script>
 <!--Top selling products end-->
 
 <!--footer part starting-->
