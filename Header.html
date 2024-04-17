@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PerfumeLanka</title>
+    <link rel="stylesheet" href="Style.css">
+    <script src="https://kit.fontawesome.com/1165876da6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+ <!--nav bar start-->
+ <header>
+    <div class="first">
+        <nav>
+            <h2 class="logo">Perfume Lanka</h2>
+            <ul>
+
+                <li><a href="A:\JAVA WEB APP\index.html" class="home">Home</a></li>
+                <li><a href="A:\JAVA WEB APP\Men.html">Men</a></li>
+                <li><a href="A:\JAVA WEB APP\women.html">Women</a></li>
+                <li><a href="A:\JAVA WEB APP\unisex.html">Unisex</a></li>
+                <li><a href="">Register</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href=""><i class="fa-solid fa-cart-plus"></i></a></li>
+            </ul>
+            <div class="menu">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </nav>
+    </div>
+    
+</body>
+<script>
+    const menu = document.querySelector('.menu')
+    const menulist = document.querySelector('nav ul')
+    menu.addEventListener('click',()=>{
+           menulist.classList.toggle('showmenu')
+    })
+</script>
+</header>
+<!--nav bar ends-->
+</html>
