@@ -1,0 +1,106 @@
+Show databases;
+create database PerfumeLanka;
+use PerfumeLanka;
+
+create table admin(
+admin_id int(2) auto_increment not null,
+username varchar(255) not null,
+password varchar(255) not null,
+primary key (admin_id));
+
+
+Create table profile(
+cust_id int(10) not null auto_increment,
+name varchar(50) not null,
+email varchar(50) not null,
+AddressLine1 varchar(255),
+AddressLine2 varchar(255),
+AdressLine3 varchar(255),
+phoneNo varchar(10)not null,
+password varchar(255) not null,
+dob date,
+admin_id int(2),
+primary key(cust_id),
+foreign key (admin_id) references admin(admin_id));
+
+
+Create table payment(
+pay_id int(10) auto_increment not null,
+payment_method varchar(50),
+total_amount decimal(15,2),
+cust_id int(10),
+card_no int(16),
+primary key (pay_id),
+foreign key (cust_id) references profile(cust_id));
+
+
+create table credit_or_debit_card(
+card_no int(16) not null,
+exp_date date not null,
+cvv int(3) not null,
+name_on_card varchar(150) not null,
+cust_id int(10),
+primary key (card_no),
+foreign key (cust_id) references profile(cust_id));
+
+create table cart(
+cart_id int(10) auto_increment not null,
+cust_id int(10) not null,
+perfume_id int(10) not null,
+quantity int(3) not null,
+primary key(cart_id),
+foreign key (cust_id) references profile(cust_id),
+foreign key (perfume_id) references perfume(perfume_id));
+
+create table category(
+category_id int(2) auto_increment not null,
+category_name varchar(20) not null,
+admin_id int(10),
+primary key(category_id),
+foreign key(admin_id) references admin(admin_id));
+
+create table perfume(
+perfume_id int(10) auto_increment not null,
+perfume_name varchar(255) not null,
+description varchar(255) not null,
+price decimal(10,2) not null,
+quantity_available int(3) not null,
+image BLOB not null,
+category_id int(2),
+admin_id int(2),
+primary key (perfume_id),
+foreign key(category_id) references category(category_id),
+foreign key(admin_id) references admin(admin_id));
+
+Create table Customer_Order(
+order_id int(10) auto_increment not null,
+quantity int(3) not null,
+total_amount decimal(12,2) not null,
+order_date date not null,
+payment_id int(10),
+cust_id int(10),
+admin_id int(10),
+primary key(order_id),
+foreign key(cust_id) references profile(cust_id),
+foreign key(payment_id) references payment(pay_id),
+foreign key(admin_id) references admin(admin_id));
+
+
+create table review(
+review_id int(10) auto_increment not null,
+review varchar(255) not null,
+cust_id int(10) not null,
+perfume_id int(10) not null,
+admin_id int(2),
+primary key(review_id),
+foreign key(cust_id) references profile(cust_id),
+foreign key(perfume_id) references perfume(perfume_id),
+foreign key(admin_id) references admin(admin_id));
+
+create table perfumeOrder(
+order_id int(10),
+perfume_id int(10),
+quantity int(3),
+primary key(order_id,perfume_id),
+foreign key(order_id) references Customer_Order(order_id),
+foreign key(perfume_id) references perfume(perfume_id));
