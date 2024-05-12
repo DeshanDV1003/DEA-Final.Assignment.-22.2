@@ -1,0 +1,108 @@
+create database perfumelanka;
+use perfumelanka;
+
+Create table Admin(
+Admin_id int auto_increment not null primary key,
+AdminFname varchar(255) not null,
+AdminLname varchar(255) not null,
+AdminEmail varchar(255) not null,
+Password varchar(255));
+
+Create table category(
+Category_id int auto_increment not null primary key,
+Category_name varchar(255) not null,
+Category_Description varchar(255),
+image text,
+Admin_id int,
+Foreign key (Admin_id) references Admin(Admin_id));
+
+create table product(
+ProductID int auto_increment not null primary key,
+Product_Name varchar(255) not null,
+Product_description varchar(255) not null,
+Unit_Price decimal(12,2) not null,
+Unit_weight decimal(12,2),
+UnitsInStock int(10),
+RecorderLevel int(10),
+picture text not null,
+Category_id int not null,
+Admin_id int,
+Foreign key (category_id) references category(category_id),
+Foreign key (Admin_id) references Admin(Admin_id));
+
+create table Customer(
+CustomerId int auto_increment not null primary key,
+ContactName varchar(255) not null,
+phoneNumber varchar(10) not null,
+email varchar(255) not null,
+city varchar(255) not null,
+Address varchar(255) not null,
+PostalCode int(10) not null,
+Password varchar(255) not null,
+AdminId int,
+Foreign key (AdminId) references Admin(Admin_id));
+
+Create table cart(
+CartId int auto_increment not null,
+NumofProducts int(10) not null,
+Total_Price decimal(12,2) not null,
+Customer_Id int not null,
+product_Id int not null,
+primary key(CartId,Customer_Id,Product_Id),
+Foreign key (Customer_Id) references Customer(CustomerId),
+Foreign key (Product_Id) references Product(ProductID));
+
+Create table Shipper(
+ShipperId int auto_increment not null primary key,
+Phone varchar(10) not null,
+CompanyName varchar(255) not null,
+AdminId int,
+Foreign key (AdminId) references Admin(Admin_id));
+
+Create table CreditCard(
+CreditCardId int auto_increment not null primary key,
+CreditCardNo int(16) not null,
+creditCardType varchar(250),
+CardHolderName varchar(255) not null,
+CreditCardCvv int(3),
+ExpDate varchar(255));
+
+Create table BillingInfo(
+BillingId int auto_increment not null primary key,
+BillingDate varchar(255),
+BillingAddress varchar(255),
+BillPostalCode int(10),
+BillCity varchar(255),
+CreditCardId int,
+CustomerId int,
+Foreign key (CreditCardId) references CreditCard(CreditCardId),
+Foreign key (CustomerId) references Customer(CustomerId));
+
+
+Create table CustomerOrder(
+OrderID int auto_increment not null primary key,
+OrderDate varchar(255),
+RequiredDate varchar(255),
+total_amount decimal(12,2),
+ShippedDate varchar(255),
+ShippingCost decimal(12,2),
+ShipAddress varchar(255),
+ShipPostalCode int(10),
+quantity int(10),
+OrderStatus boolean not null default false,
+cartId int,
+AdminId int,
+CustomerId int,
+BillingId int,
+ShipperId int,
+product_Id int,
+Foreign key (cartId) references cart(CartId),
+Foreign key (AdminId) references Admin(Admin_id),
+Foreign key (CustomerId) references Customer(CustomerId),
+Foreign key (BillingId) references BillingInfo(BillingId),
+Foreign key (ShipperId) references Shipper(ShipperId),
+Foreign key (Product_Id) references Product(ProductID));
+
+
+
+
